@@ -24,5 +24,26 @@ This is a basic frontend input form for guesstimating insurance costs.. It uses 
 6. npm run dev
 7. Delete vite boiler plate
 
+## Git Installation
 
+Git init.
+create repo on gitHub
+git add remote origin git@ithub.........
+git branch -M main
+git push -u origin main
+git checkout -b sonny
+git pull origin main
+
+## Git work Flow
+
+git checkout {branch}
+git add .
+git commit -m 'message'
+git push
+open pull request.
+merge code to main
+git checkout main
+git pull
+git checkout {my branch}
+git merge main
 
