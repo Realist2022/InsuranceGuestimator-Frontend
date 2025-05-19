@@ -13,7 +13,7 @@ If you are developing a production application, we recommend using TypeScript wi
 
 ## DESCRIPTION 
 
-This is a basic frontend input form for guesstimating insurance costs.. It uses axios, react with vite boilerplate.. The main purpose for this frontend is to upload an image so I can send it through the backend for processing, and sending it into azure custom vision.
+This is a basic frontend input form for guesstimating insurance costs.. It uses axios, react with vite boilerplate.. The main purpose for this frontend is to upload an image so I can send it through to the backend for processing, which will send it to azure custom vision for a prediction result. As soon as I receive the prediction results my frontend will conditionally render a base price accordingly to the type of vehicle or a write off.
 
 ## GETTING STARTED 
 1. npm create vite@latest
