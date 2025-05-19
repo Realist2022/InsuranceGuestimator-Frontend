@@ -26,24 +26,27 @@ This is a basic frontend input form for guesstimating insurance costs.. It uses 
 
 ## Git Installation
 
-Git init.
-create repo on gitHub
-git add remote origin git@ithub.........
-git branch -M main
-git push -u origin main
-git checkout -b sonny
-git pull origin main
+1. Git init.
+2. create repo on gitHub
+3. git add remote origin git@ithub.........
+4. git branch -M main
+5. git push -u origin main
+6. git checkout -b sonny
+7. git pull origin main
 
 ## Git work Flow
 
-git checkout {branch}
-git add .
-git commit -m 'message'
-git push
-open pull request.
-merge code to main
-git checkout main
-git pull
-git checkout {my branch}
-git merge main
+1. git checkout {branch}
+2. git add .
+3. git commit -m 'message'
+4. git push
+5. open pull request.
+6. merge code to main
+7. git checkout main
+8. git pull
+9. git checkout {my branch}
+10. git merge main
+
+## Git clone
+
 
