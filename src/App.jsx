@@ -16,9 +16,9 @@ function App() {
   const [error, setError] = useState(null); // FOR ERROR HANDLING
   const [isDragging, setIsDragging] = useState(false); // FOR DRAG AND DROP
 
-  // HANDLE INPUT CHANGE: Linked to onChange events inside the form .
-  const handleInputChange = (e) => {  
-    const { name, value } = e.target; // Targets the name and value of the input field. 
+  // HANDLE INPUT CHANGE: Linked to onChange events inside the form.
+  const handleInputChange = (e) => {
+    const { name, value } = e.target; // Targets the name and value of the input field.
 
     // Updates formData state with the new values
     setFormData((prevState) => ({
@@ -35,7 +35,7 @@ function App() {
 
     // BASIC FILE VALIDATION: This is for checking file type and size
     if (file) {
-      // VAIRABLES FOR FILE VALIDATION
+      // FILE TYPE VALIDATION
       const allowedTypes = [
         "image/png",
         "image/jpeg",
@@ -50,13 +50,13 @@ function App() {
       if (allowedTypes.includes(file.type) && file.size <= maxSizeBytes) {
         setSelectedFile(file);
 
-        // --- Image Preview Logic ---
+        // --- IMAGE PREVIEW LOGIC ---
         const reader = new FileReader();
         reader.onloadend = () => {
           setImagePreviewUrl(reader.result); // Set the Data URL to state
         };
         reader.readAsDataURL(file); // Read the file as a Data URL
-        // --- End Image Preview Logic ---
+        // --- END IMAGE PREVIEW LOGIC ---
       } else {
         alert(
           `Invalid file type or size. Please upload PNG, JPG, jpeg, BMP, or GIF up to ${maxSizeMB}MB.`
@@ -195,7 +195,7 @@ function App() {
             name="vehicleType"
             value={formData.vehicleType}
             onChange={handleInputChange}
-            required 
+            required
           >
             <option value="">--Select Type--</option>
             <option value="Sedan">Sedan</option>
@@ -248,7 +248,7 @@ function App() {
           </div>
 
           {/* SUBMIT BUTTON: This button is disabled until required fields */}
-          <button type="submit" disabled={uploading}> 
+          <button type="submit" disabled={uploading}>
             {uploading ? "Uploading..." : "Submit and Classify"}
           </button>
         </form>
@@ -271,35 +271,9 @@ function App() {
 
             <p>
               <strong>Insurance Summary:</strong>
-              {(() => {
-                // Check if results and predictionSummary exist
-                if (results && results.predictionSummary) {
-                  const predictionTag = results.predictionSummary
-                    .toString()
-                    .toLowerCase()
-                    .split(" ")[0]; // Get the first word and make it lowercase
-
-                  // INSURANCE BASE PRICE: Conditional rendering for different vehicle types
-                  if (predictionTag === "trucks") {
-                    return " Truck insurance base price: $160 monthly.";
-                  } else if (predictionTag === "suv") {
-                    return " SUV insurance base price: $130 monthly.";
-                  } else if (predictionTag === "sedan") {
-                    return " Sedan insurance base price: $110 monthly";
-                  } else if (predictionTag === "write") {
-                    return " Write off";
-                  } else {
-                    // Handle cases where the first word isn't recognized
-                    return ` Could not determine base price from prediction: "${results.predictionSummary}".`;
-                  }
-                } else if (results && results.message) {
-                  // Handle cases where the backend returns a message instead of predictionSummary
-                  return ` ${results.message}`;
-                } else {
-                  // Fallback if no relevant result data is found
-                  return " No prediction summary available.";
-                }
-              })()}
+              {results.basePrice
+                ? `${results.basePrice}`
+                : " No base price available."}
             </p>
           </div>
         )}
